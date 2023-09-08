@@ -1,0 +1,145 @@
+{% extends 'base.html' %}
+
+{% block title %}Stories | Writings | Baba's Archive{% endblock title %}
+
+{% block body %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stories | Baba's Archive</title>
+    <style>
+        /* Same styling as the Articles and Poems pages */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f6f6f6;
+        }
+        .container {
+            display: flex;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+        .stories-list {
+            flex: 1;
+            background-color: #F7F8E0; 
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            overflow-y: auto;
+        }
+        .stories-list ul {
+            list-style: none;
+            padding: 0;
+            text-align: left;
+        }
+        .stories-list li {
+            font-size: 18px;
+            margin-bottom: 10px;
+            cursor: pointer;
+            padding: 8px;
+            transition: background-color 0.3s, border-color 0.3s;
+            border-radius: 5px;
+            background-color: #F5F6CE; 
+            border: 2px solid transparent;
+            color: #61380B; /* Light brown color for the font */
+        }
+        .stories-list li:hover {
+            background-color: #F7F8E0; /* Brown color */
+            border-color: #8B7355; /* Light brown color */
+        }
+        .stories-list li.active {
+            background-color: #fff; /* White color */
+            color: #333;
+        }
+        .story-content {
+            flex: 2;
+            background-color: beige;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            overflow-y: auto;
+            margin-left: 20px; /* Added margin */
+        }
+        .story-title {
+            font-size: 24px;
+            margin-bottom: 10px;
+            color: #333;
+        }
+        .story-text {
+            font-size: 16px;
+            line-height: 1.5;
+            color: #555;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="stories-list">
+            <ul>
+                <li onclick="loadStory(1)">Story Title 1</li>
+                <li onclick="loadStory(2)">Story Title 2</li>
+                <li onclick="loadStory(3)">Story Title 3</li>
+                <li onclick="loadStory(4)">Story Title 4</li>
+                <li onclick="loadStory(5)">Story Title 5</li>
+                <li onclick="loadStory(6)">Story Title 6</li>
+                <li onclick="loadStory(7)">Story Title 7</li>
+                <li onclick="loadStory(8)">Story Title 8</li>
+            </ul>
+        </div>
+        <div class="story-content">
+            <h1 class="story-title">Choose a Story to begin reading!</h1>
+            <div class="story-text">
+                <!-- Story content will be loaded here -->
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function loadStory(storyNumber) {
+            // You can replace these placeholders with the actual content of your stories
+            const storyTitles = [
+                'Story Title 1',
+                'Story Title 2',
+                'Story Title 3',
+                'Story Title 4',
+                'Story Title 5',
+                'Story Title 6',
+                'Story Title 7',
+                'Story Title 8'
+            ];
+            const storyContents = [
+                'This is the content of Story 1.',
+                'This is the content of Story 2.',
+                'This is the content of Story 3.',
+                'This is the content of Story 4.',
+                'This is the content of Story 5.',
+                'This is the content of Story 6.',
+                'This is the content of Story 7.',
+                'This is the content of Story 8.'
+            ];
+
+            const selectedStoryTitle = document.querySelector('.story-title');
+            const selectedStoryText = document.querySelector('.story-text');
+
+            // Remove active class from all items
+            const storyItems = document.querySelectorAll('.stories-list li');
+            storyItems.forEach(item => {
+                item.classList.remove('active');
+            });
+
+            // Add active class to the clicked item
+            const clickedItem = document.querySelector(`.stories-list li:nth-child(${storyNumber})`);
+            clickedItem.classList.add('active');
+
+            selectedStoryTitle.textContent = storyTitles[storyNumber - 1];
+            selectedStoryText.textContent = storyContents[storyNumber - 1];
+        }
+    </script>
+</body>
+</html>
+{% endblock body %}

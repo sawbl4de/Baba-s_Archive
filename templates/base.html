@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Crossroad&display=swap">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f7f7f7;
+            background-image: url('/static/img/4.webp'); /* Replace with your background image path */
+            background-size: cover;
+            background-repeat: no-repeat;
+        }
+        .navbar {
+            background-color: beige;
+            border-bottom: 4px solid #d2b48c;
+            width: 100%;
+            margin-left: 0;
+            margin-right: 0;
+        }
+        .navbar-brand {
+            font-family: 'Times New Roman', serif;
+            font-size: 24px;
+            color: black;
+        }
+        .navbar-nav .nav-link {
+            font-family: Arial, sans-serif;
+            font-size: 18px;
+            color: black;
+        }
+        .navbar-nav .nav-link.active,
+        .navbar-nav .nav-item.dropdown.show .nav-link {
+            color: #8B4513; /* Brown color */
+        }
+        .navbar-toggler-icon {
+            background-color: #fff;
+        }
+        .navbar-toggler {
+            border-color: #fff;
+        }
+        .dropdown-menu {
+            background-color: #d2b48c; /* Light brown background for dropdown menu */
+        }
+        .dropdown-item {
+            font-size: 16px;
+            color: #fff;
+            border-bottom: 1px solid white; /* Add thin white line under each item */
+        }
+        .dropdown-item.active {
+            background-color: #d2b48c; /* Light brown background for active dropdown item */
+        }
+        .dropdown-divider {
+            display: none; /* Remove the divider */
+        }
+        .form-control {
+            border: 2px solid #d2b48c;
+        }
+        .btn-outline-success {
+            color: #000;
+            background-color: #fff;
+            border-color: #28a745;
+        }
+        .btn-outline-success:hover {
+            background-color: #28a745;
+        }
+        .footer {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 2px;
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body class="p-0 m-0 border-0 bd-example m-0 border-0">
+    
+    <nav class="navbar navbar-expand-lg">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="/">Baba's Archive</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link {% if request.path == '/' %}active{% endif %}" aria-current="page" href="/">Home</a>
+                    </li>
+                    <li class="nav-item dropdown {% if '/writings/poems' in request.path or '/writings/poems' in request.path %}show{% endif %}">
+                        <a class="nav-link dropdown-toggle {% if '/writings/poems' in request.path or '/writings/poems' in request.path %}active{% endif %}" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Writings
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item {% if '/writings/poems' in request.path %}active{% endif %}" href="/writings/poems">Poems</a></li>
+                            <li><a class="dropdown-item {% if '/writings/articles' in request.path and '/writings' not in request.path %}active{% endif %}" href="/writings/articles">Articles</a></li>
+                            <li><a class="dropdown-item {% if '/writings/stories' in request.path and '/writings' not in request.path %}active{% endif %}" href="/writings/stories">Stories</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link {% if '/about' in request.path %}active{% endif %}" href="/about">About The Author</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link {% if '/contact' in request.path %}active{% endif %}" href="/contact">Contact</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link {% if '/newsletter' in request.path %}active{% endif %}" href="/newsletter">Newsletter</a>
+                    </li>
+                </ul>
+                <form class="d-flex" role="search">
+                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-outline-success" type="submit">Go!</button>
+                </form>
+            </div>
+        </div>
+    </nav>
+
+    {%if messages%}
+    {% for message in messages%}
+    <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+        {{ message }}
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      </div>
+    {% endfor %}
+    {% endif %}
+
+    {% block body %}
+    {% endblock body %}
+    
+    <div class="footer">
+        <p>{% now "Y" %} Baba's Archive. All rights reserved.</p>
+    </div>    
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

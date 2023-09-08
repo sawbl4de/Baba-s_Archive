@@ -1,0 +1,157 @@
+{% extends 'base.html' %}
+
+{% block title %}Newsletter | Baba's Archive{% endblock title %}
+
+{% block body%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login | Baba's Archive</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f7f7f7;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            align-items: center; /* Center content horizontally */
+        }
+        .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            width: 750px;
+            margin-top: 30px;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+            background-color: #ffffff;
+        }
+        #login-form {
+            flex: 1;
+            padding-right: 20px;
+            z-index: 2;
+        }
+        .login-heading {
+            background-color: #f9f9e2;
+            color: #000;
+            padding: 15px 25px;
+            border-radius: 10px 10px 0 0;
+            font-size: 30px;
+            font-family: 'Times New Roman', serif;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        input[type="text"], input[type="password"] {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+            transition: border-color 0.3s ease-in-out;
+            box-sizing: border-box;
+        }
+        input[type="text"]:focus, input[type="password"]:focus {
+            border-color: #0077cc;
+        }
+        input[type="submit"] {
+            background-color: #0077cc;
+            color: #fff;
+            padding: 15px 25px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background-color 0.3s ease-in-out;
+        }
+        input[type="submit"]:hover {
+            background-color: #005da0;
+        }
+        h2 {
+            color: #333;
+            margin-bottom: 20px;
+            font-size: 28px;
+        }
+        label {
+            color: #555;
+            display: block;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+        .custom-input {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+            transition: border-color 0.3s ease-in-out;
+            box-sizing: border-box;
+            height: 40px;
+        }        
+        .btn.btn-primary a {
+            color: #fff;
+            text-decoration: none;
+        }
+        .btn.btn-primary {
+            width: auto; /* Adjust the width as needed */
+            white-space: nowrap; /* Prevent text from wrapping */
+        }
+        input[type="text"], input[type="email"], input[type="password"] {
+            height: 40px; /* or adjust the value as needed */
+        }
+        .thin-box {
+            display: inline-block;
+            background-color: #ffffff;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <form id="login-form" method="post" action="/register/">
+            {% csrf_token %}
+            <h2 class="login-heading">Register</h2>
+            <label for="username">Username</label>
+            <input type="text" id="username" name="username" required class="custom-input">
+
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" required class="custom-input">
+
+            <label for="password1">Password</label>
+            <input type="password" id="password1" name="password1" required class="custom-input">
+
+            <label for="password2">Confirm Password</label>
+            <input type="password" id="password2" name="password2" required class="custom-input">
+
+            <div class="button-group">
+                <input type="submit" value="Register" class="btn btn-primary">
+            </div>
+    
+            <div class="text-center mx-auto" >
+                <a href="/login/" class="btn btn-secondary">Already have an account? Sign in</a>
+            </div>
+        </form>
+    </div>
+    <div style="text-align: center;">
+        <div class="col-md-8 mx-auto social-container my-2 order-md-1">
+            <button class="btn btn-primary mb-2">
+                <a href="{%url 'social:begin' 'google-oauth2' %}" style="text-decoration: none;">
+                    <img src="/static/img/google_logo.webp" alt="Google Logo" style="width: 20px; height: 20px; margin-right: 5px;">
+                    Sign up with Google
+                </a>
+            </button>
+        </div>
+    </div>
+</body>
+</html>
+
+{% endblock body%}

@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% block title %}About The Author | Baba's Archive{% endblock title %}
+
+{% block body %}
+<html lang="en">
+<head>
+    <title>About | Baba's Archive</title>
+</head>
+
+<div class="container mt-4">
+    <div class="row">
+        <div class="col-md-6 text-center">
+            <img src="/static/img/baba1.webp" alt="Author Image" class="img-fluid rounded-rectangle mb-4" style="width: 231px; height: 269px; margin: 0 auto;">
+        </div>
+        <div class="col-md-6">
+            <div class="about-box p-4">
+                <h2 class="mb-3">Meet the Author</h2>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis eget diam eget ligula luctus consequat at nec libero. Curabitur ac libero eu purus bibendum ultrices. Fusce ac lorem id lectus ultricies luctus nec eu augue.</p>
+                <p>Suspendisse ultrices eleifend metus, at tempor libero rhoncus id. Vivamus vel dui dui. Fusce tincidunt tellus sit amet est gravida, nec malesuada est feugiat. Sed at dignissim nisl. Pellentesque eu quam in dui suscipit malesuada. Aenean dignissim ac metus nec faucibus.</p>
+                <p>Etiam congue, mauris eget ullamcorper malesuada, ligula urna pellentesque sapien, non fringilla nisl risus et sem. Vivamus ultricies erat nec dui auctor, eu convallis dui vestibulum. Suspendisse potenti. Curabitur volutpat libero vitae scelerisque.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .about-box {
+        background-color: #FBF8EF; /* Light gray background */
+        border: 1px solid #dee2e6; /* Gray border */
+        border-radius: 8px;
+    }
+</style>
+
+{% endblock body %}

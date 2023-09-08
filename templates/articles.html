@@ -1,0 +1,147 @@
+{% extends 'base.html' %}
+
+{% block title %}Articles | Writings | Baba's Archive{% endblock title %}
+
+{% block body %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Articles | Baba's Archive</title>
+    <style>
+        /* Same styling as the Poems and Stories pages */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f6f6f6;
+        }
+        .container {
+            display: flex;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+        .articles-list {
+            flex: 1;
+            background-color: #F7F8E0; 
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            overflow-y: auto;
+        }
+        .articles-list ul {
+            list-style: none;
+            padding: 0;
+            text-align: left;
+        }
+        .articles-list li {
+            font-size: 18px;
+            margin-bottom: 10px;
+            cursor: pointer;
+            padding: 8px;
+            transition: background-color 0.3s, border-color 0.3s; /* Added border-color transition */
+            transition: background-color 0.3s;
+            border-radius: 5px;
+            background-color: #F5F6CE; 
+            border: 2px solid transparent; /* Added border property */
+            color: #61380B; 
+        }
+        .articles-list li:hover {
+            background-color: #F7F8E0; /* Brown color */
+            border-color: #8B7355; /* Light brown color */
+
+        }
+        .articles-list li.active {
+            background-color: #fff; /* White color */
+            color: #333;
+        }
+        .article-content {
+            flex: 2;
+            background-color: beige;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            overflow-y: auto;
+            margin-left: 20px; /* Added margin */
+        }
+        .article-title {
+            font-size: 24px;
+            margin-bottom: 10px;
+            color: #333;
+        }
+        .article-text {
+            font-size: 16px;
+            line-height: 1.5;
+            color: #555;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="articles-list">
+            <ul>
+                <li onclick="loadArticle(1)">Article Title 1</li>
+                <li onclick="loadArticle(2)">Article Title 2</li>
+                <li onclick="loadArticle(3)">Article Title 3</li>
+                <li onclick="loadArticle(4)">Article Title 4</li>
+                <li onclick="loadArticle(5)">Article Title 5</li>
+                <li onclick="loadArticle(6)">Article Title 6</li>
+                <li onclick="loadArticle(7)">Article Title 7</li>
+                <li onclick="loadArticle(8)">Article Title 8</li>
+            </ul>
+        </div>
+        <div class="article-content">
+            <h1 class="article-title">Choose an Article to begin reading!</h1>
+            <div class="article-text">
+                <!-- Article content will be loaded here -->
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function loadArticle(articleNumber) {
+            // You can replace these placeholders with the actual content of your articles
+            const articleTitles = [
+                'Article Title 1',
+                'Article Title 2',
+                'Article Title 3',
+                'Article Title 4',
+                'Article Title 5',
+                'Article Title 6',
+                'Article Title 7',
+                'Article Title 8'
+            ];
+            const articleContents = [
+                'This is the content of Article 1.',
+                'This is the content of Article 2.',
+                'This is the content of Article 3.',
+                'This is the content of Article 4.',
+                'This is the content of Article 5.',
+                'This is the content of Article 6.',
+                'This is the content of Article 7.',
+                'This is the content of Article 8.'
+            ];
+
+            const selectedArticleTitle = document.querySelector('.article-title');
+            const selectedArticleText = document.querySelector('.article-text');
+
+            // Remove active class from all items
+            const articleItems = document.querySelectorAll('.articles-list li');
+            articleItems.forEach(item => {
+                item.classList.remove('active');
+            });
+
+            // Add active class to the clicked item
+            const clickedItem = document.querySelector(`.articles-list li:nth-child(${articleNumber})`);
+            clickedItem.classList.add('active');
+
+            selectedArticleTitle.textContent = articleTitles[articleNumber - 1];
+            selectedArticleText.textContent = articleContents[articleNumber - 1];
+        }
+    </script>
+</body>
+</html>
+{% endblock body %}

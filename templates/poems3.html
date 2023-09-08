@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+
+{% block title %}Poems | Writings | Baba's Archive{% endblock title %}
+
+{% block body %}
+<div class="container">
+    <div class="poems-list">
+        <ul>
+            {% for poem in poems %}
+                <li data-poem-id="{{ poem.id }}" onclick="loadPoem({{ poem.id }})">{{ poem.title }}</li>
+            {% endfor %}
+        </ul>
+    </div>
+    <div class="poem-content">
+        <h1 class="poem-title">Choose a Poem to begin reading!</h1>
+        <div class="poem-text">
+            <h2>{{ selected_poem.title }}</h2>
+            <p>{{ selected_poem.content }}</p>
+        </div>
+    </div>
+</div>
+
+<script>
+    function loadPoem(poemId) {
+        fetch(`/get_poem_content/${poemId}/`)
+            .then(response => response.json())
+            .then(data => {
+                const selectedPoemTitle = document.querySelector('.poem-title');
+                const selectedPoemText = document.querySelector('.poem-text');
+    
+                const poemItems = document.querySelectorAll('.poems-list li');
+                poemItems.forEach(item => {
+                    item.classList.remove('active');
+                });
+    
+                const clickedItem = document.querySelector(`.poems-list li[data-poem-id="${poemId}"]`);
+                clickedItem.classList.add('active');
+    
+                // Update the selected poem's title and content
+                selectedPoemTitle.textContent = data.title;
+                selectedPoemText.innerHTML = `<h2>${data.title}</h2><p>${data.content}</p>`;
+            })
+            .catch(error => {
+                console.error('Error fetching poem content:', error);
+            });
+    }
+</script>
+{% endblock body %}

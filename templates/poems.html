@@ -1,0 +1,148 @@
+{% extends 'base.html' %}
+
+{% block title %}Poems | Writings | Baba's Archive{% endblock title %}
+
+{% block body %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Poems | Baba's Archive</title>
+    <style>
+        /* Same styling as the Articles and Stories pages */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f6f6f6;
+        }
+        .container {
+            display: flex;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+        .poems-list {
+            flex: 1;
+            background-color: #F7F8E0; 
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            overflow-y: auto;
+        }
+        .poems-list ul {
+            list-style: none;
+            padding: 0;
+            text-align: left;
+        }
+        .poems-list li {
+            font-size: 18px;
+            margin-bottom: 10px;
+            cursor: pointer;
+            padding: 8px;
+            transition: background-color 0.3s, border-color 0.3s;
+            border-radius: 5px;
+            background-color: #F5F6CE; 
+            border: 2px solid transparent;
+            color: #61380B; /* Light brown color for the font */
+        }
+        .poems-list li:hover {
+            background-color: #F7F8E0; /* Brown color */
+            border-color: #8B7355; /* Light brown color */
+        }
+        .poems-list li.active {
+            background-color: #fff; /* White color */
+            color: #333;
+        }
+        .poem-content {
+            flex: 2;
+            background-color: beige;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            overflow-y: auto;
+            margin-left: 20px; /* Added margin */
+        }
+        .poem-title {
+            font-size: 24px;
+            margin-bottom: 10px;
+            color: #333;
+        }
+        .poem-text {
+            font-size: 16px;
+            line-height: 1.5;
+            color: #555;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="poems-list">
+            <ul>
+                {% for i in list_title %}
+                <li class="titles {{ i.id }}" data-info="{{ i.id }}" onclick="loadContent({{ i.id }})">{{ i.title }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+        {% for i in list_title %}
+        <div class="poem-content pcontent{{ i.id }} content_hide" style="display:none">
+            <h1 class="poem-title">{{ i.title }}</h1>
+            <div class="poem-text">
+                <!-- Poem content will be loaded here -->
+                {{ i.content }}
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+
+    <script> 
+        function loadContent(poemNumber){
+            //document.querySelector("div:not(['.pcontent'+poemNumber])").style.display = "none";
+            var els = document.querySelectorAll('.content_hide');
+                for(var i = 0; i < els.length; i++){
+                    els[i].style.display = 'none';
+                }
+            document.querySelector(".pcontent"+poemNumber).style.display = "block";
+            }
+            function loadPoem(poemNumber) {
+            const poemTitles = [
+                "Poem Title 1",
+                "Poem Title 2",
+                'Poem Title 3',
+                'Poem Title 4',
+                'Poem Title 5',
+                'Poem Title 6',
+                'Poem Title 7',
+                'Poem Title 8'
+            ]; 
+            const poemContents = [
+                'This is the content of Poem 1.',
+                'This is the content of Poem 2.',
+                'This is the content of Poem 3.',
+                'This is the content of Poem 4.',
+                'This is the content of Poem 5.',
+                'This is the content of Poem 6.',
+                'This is the content of Poem 7.',
+                'This is the content of Poem 8.'
+            ];
+
+            const selectedPoemTitle = document.querySelector('.poem-title');
+            const selectedPoemText = document.querySelector('.poem-text');
+
+            const poemItems = document.querySelectorAll('.poems-list li');
+            poemItems.forEach(item => {
+                item.classList.remove('active');
+            });
+
+            const clickedItem = document.querySelector(`.poems-list li:nth-child(${poemNumber})`);
+            clickedItem.classList.add('active');
+
+            selectedPoemTitle.textContent = poemTitles[poemNumber - 1];
+            selectedPoemText.innerHTML = poemContents[poemNumber - 1];
+        }
+    </script>
+</body>
+</html>
+{% endblock body %}
