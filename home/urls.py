@@ -16,6 +16,8 @@ urlpatterns = [
     path('newsletter/', views.newsletter, name='newsletter'),
     path('social-auth/', include('social_django.urls', namespace='social')),
     path('signup', views.handleSignUp, name="handleSignUp"),
+    path('login', views.handleLogin, name="handleLogin"),
+    path('logout', views.handleLogout, name="handleLogout"),
 ]
 
     

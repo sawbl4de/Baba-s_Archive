@@ -5,6 +5,7 @@ from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse
 from django.contrib.auth.models import User
+from django.contrib.auth import authenticate, login, logout
 
 def index(request):
     # Your index view code here
@@ -58,7 +59,19 @@ def handleSignUp(request):
         pass2=request.POST['pass2']
 
         # check for errorneous input
-        
+        if len(username) > 10:
+            messages.success(request, 'Username must be under 10 characters!')
+            return redirect('/newsletter')
+        if len(pass1) < 8:
+            messages.success(request, 'Password must be atleast 8 characters long!')
+            return redirect('/newsletter')
+        if pass1 != pass2:
+            messages.success(request, 'Passwords do not match!')
+            return redirect('/newsletter')
+        if not username.isalnum():
+            messages.success(request, 'Username must contain only letters and numbers!')
+            return redirect('/newsletter')
+
         # Create the user
         myuser = User.objects.create_user(username, email, pass1)
         myuser.first_name= fname
@@ -69,6 +82,17 @@ def handleSignUp(request):
 
     else:
         return HttpResponse("404 - Not found")
+    
+
+def handleLogin(request):
+    loginusername=request.POST['loginusername']
+    loginpassword=request.POST['loginpassword']
+
+    return HttpResponse('handleLogin')
+
+
+def handleLogout(request):
+    return HttpResponse('handleLogout')
 
 
 
