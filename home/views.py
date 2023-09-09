@@ -77,7 +77,7 @@ def handleSignUp(request):
         myuser.first_name= fname
         myuser.last_name= lname
         myuser.save()
-        messages.success(request, 'Your Account was created successfully!')
+        messages.success(request, 'Your Account was created successfully! Login now')
         return redirect('/newsletter')
 
     else:
@@ -94,7 +94,7 @@ def handleLogin(request):
         if user is not None:
             login(request, user)
             messages.success(request, 'You have logged in succesfully!')
-            return redirect('/')
+            return redirect('/writings/poems')
         else:
             messages.success(request, 'Invalid credentials. Please try again.')
             return redirect('/newsletter')
