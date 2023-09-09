@@ -85,8 +85,20 @@ def handleSignUp(request):
     
 
 def handleLogin(request):
-    loginusername=request.POST['loginusername']
-    loginpassword=request.POST['loginpassword']
+    if request.method=="POST": 
+        loginusername=request.POST['loginusername']
+        loginpassword=request.POST['loginpassword']
+
+        user = authenticate(username=loginusername, password=loginpassword)
+        
+        if user is not None:
+            login(request, user)
+            messages.success(request, 'You have logged in succesfully!')
+            return redirect('/newsletter')
+        else:
+            messages.success(request, 'Invalid credentials. Please try again.')
+            return redirect('/newsletter')
+
 
     return HttpResponse('handleLogin')
 
