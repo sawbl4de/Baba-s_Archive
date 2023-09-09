@@ -2,13 +2,13 @@
 
 {% block title %}Newsletter | Baba's Archive{% endblock title %}
 
-{% block body%}
+{% block body %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login | Baba's Archive</title>
+    <title>Newsletter | Baba's Archive</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -18,36 +18,29 @@
             display: flex;
             flex-direction: column;
             min-height: 100vh;
-            align-items: center; /* Center content horizontally */
         }
         .container {
             display: flex;
             justify-content: space-between;
             align-items: flex-start;
-            width: 750px;
+            width: 80%;
             margin-top: 30px;
             padding: 30px;
             border-radius: 10px;
             box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
             background-color: #ffffff;
         }
-        #login-form {
-            flex: 1;
-            padding-right: 20px;
-            z-index: 2;
+        .left-container {
+            width: 45%;
         }
-        .login-heading {
-            background-color: #f9f9e2;
-            color: #000;
-            padding: 15px 25px;
-            border-radius: 10px 10px 0 0;
-            font-size: 30px;
-            font-family: 'Times New Roman', serif;
-            margin-bottom: 20px;
-            text-align: center;
+        .right-container {
+            width: 45%;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
         }
-        input[type="text"], input[type="password"] {
-            width: 100%;
+        input[type="text"], input[type="email"], textarea, input[type="password"] {
+            width: calc(100% - 24px);
             padding: 12px;
             margin-bottom: 15px;
             border: 1px solid #ccc;
@@ -56,102 +49,177 @@
             transition: border-color 0.3s ease-in-out;
             box-sizing: border-box;
         }
-        input[type="text"]:focus, input[type="password"]:focus {
+        input[type="text"]:focus, input[type="email"]:focus, textarea:focus, input[type="password"]:focus {
             border-color: #0077cc;
         }
-        input[type="submit"] {
-            background-color: #0077cc;
-            color: #fff;
-            padding: 15px 25px;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            font-weight: bold;
-            transition: background-color 0.3s ease-in-out;
+        textarea {
+            height: 180px;
+            resize: vertical;
         }
-        input[type="submit"]:hover {
-            background-color: #005da0;
+        .button-container {
+            display: flex;
+            gap: 10px;
         }
-        h2 {
-            color: #333;
-            margin-bottom: 20px;
-            font-size: 28px;
-        }
-        label {
-            color: #555;
-            display: block;
-            margin-bottom: 10px;
-            font-weight: bold;
-        }
-        .custom-input {
-            width: 100%;
+        .button {
+            flex-grow: 1;
             padding: 12px;
-            margin-bottom: 15px;
             border: 1px solid #ccc;
             border-radius: 5px;
             font-size: 16px;
-            transition: border-color 0.3s ease-in-out;
-            box-sizing: border-box;
-            height: 40px;
-        }        
-        .btn.btn-primary a {
+            cursor: pointer;
+            font-weight: bold;
+        }
+        .button.subscribe {
+            background-color: #000;
             color: #fff;
-            text-decoration: none;
+            transition: background-color 0.3s ease-in-out;
         }
-        .btn.btn-primary {
-            width: auto; /* Adjust the width as needed */
-            white-space: nowrap; /* Prevent text from wrapping */
+        .button.subscribe:hover {
+            background-color: #333;
         }
-        input[type="text"], input[type="email"], input[type="password"] {
-            height: 40px; /* or adjust the value as needed */
+        .button.login,
+        .button.google {
+            font-weight: bold;
         }
-        .thin-box {
-            display: inline-block;
-            background-color: #ffffff;
-            padding: 10px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+        .button.login {
+            background-color: #ff0000;
+            color: #fff;
+            transition: background-color 0.3s ease-in-out;
+        }
+        .button.login:hover {
+            background-color: #cc0000;
+        }
+        .button.google {
+            background-color: #007bff;
+            color: #fff;
+            transition: background-color 0.3s ease-in-out;
+        }
+        .button.google:hover {
+            background-color: #0056b3;
+        }
+
+        /* Remove outline and add margin to form-text */
+        input[type="password"] {
+            border-color: #ccc;
+        }
+        .form-text.text-muted {
+            margin-top: 10px;
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <form id="login-form" method="post" action="/register/">
-            {% csrf_token %}
-            <h2 class="login-heading">Register</h2>
-            <label for="username">Username</label>
-            <input type="text" id="username" name="username" required class="custom-input">
-
-            <label for="email">Email</label>
-            <input type="email" id="email" name="email" required class="custom-input">
-
-            <label for="password1">Password</label>
-            <input type="password" id="password1" name="password1" required class="custom-input">
-
-            <label for="password2">Confirm Password</label>
-            <input type="password" id="password2" name="password2" required class="custom-input">
-
-            <div class="button-group">
-                <input type="submit" value="Register" class="btn btn-primary">
-            </div>
-    
-            <div class="text-center mx-auto" >
-                <a href="/login/" class="btn btn-secondary">Already have an account? Sign in</a>
-            </div>
-        </form>
-    </div>
-    <div style="text-align: center;">
-        <div class="col-md-8 mx-auto social-container my-2 order-md-1">
-            <button class="btn btn-primary mb-2">
-                <a href="{%url 'social:begin' 'google-oauth2' %}" style="text-decoration: none;">
-                    <img src="/static/img/google_logo.webp" alt="Google Logo" style="width: 20px; height: 20px; margin-right: 5px;">
-                    Sign up with Google
-                </a>
-            </button>
+        <div class="left-container">
+            <form id="contact-form" method="post" action="/newsletter/">
+                {% csrf_token %}
+                <h2 class="contact-heading">Subscribe to Our Newsletter!</h2>
+                <label for="email">E-mail</label>
+                <input type="email" id="email" name="email" required>
+                <textarea id="message" name="message" required></textarea>
+            </form>
+        </div>
+        <div class="right-container">
+            <button type="button" class="button login" data-toggle="modal" data-target="#loginModal">Login</button>
+            <button type="button" class="button subscribe" data-toggle="modal" data-target="#subscribeModal">Sign Up</button>
+            <button type="button" class="button google"><a href="{%url 'social:begin' 'google-oauth2' %}" style="text-decoration: none; color: #fff;">
+                <img src="/static/img/google_logo.webp" alt="Google Logo" style="width: 20px; height: 20px; margin-right: 5px;">
+                Sign up with Google
+            </a>
+        </button>
         </div>
     </div>
+
+    <!-- Bootstrap Modal for Login -->
+    <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="loginModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="loginModalLabel">Login</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="form-group">
+                            <label for="username">Username</label>
+                            <input type="text" class="form-control" id="usernamelogin" name="usernamelogin" placeholder="Enter A Unique Username">
+                        </div>
+                        <div class="form-group">
+                          <label for="password">Password</label>
+                          <input type="password" class="form-control" id="pass" name="pass" placeholder="Password">
+                        </div>
+                        <div class="form-check">
+                          <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                          <label class="form-check-label" for="exampleCheck1">Remember Me</label>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                      </form>
+                </div>
+                <div class="modal-footer">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap Modal for Sign Up -->
+    <div class="modal fade" id="subscribeModal" tabindex="-1" role="dialog" aria-labelledby="subscribeModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="subscribeModalLabel">Sign Up</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form action="/signup" method="post">
+                        {% csrf_token %} 
+                        <div class="form-group">
+                            <label for="username">Username</label>
+                            <input type="text" class="form-control" id="username" name="username" placeholder="Enter A Unique Username">
+                          </div>
+                        <div class="form-group">
+                          <label for="email">Email address</label>
+                          <input type="email" class="form-control" id="email" aria-describedby="emailHelp" name="email" placeholder="Enter Email">
+                          <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+                        </div>
+                        <div>
+                        </div>
+                        <div class="form-group">
+                            <label for="fname"> Name</label>
+                            <input type="text" class="form-control" id="fname" name="fname" placeholder="Enter First Name">
+                        </div>
+                        <div class="form-group">
+                            <label for="lname"> Name</label>
+                            <input type="text" class="form-control" id="lname" name="lname" placeholder="Enter Last Name">
+                        </div>
+                        <div class="form-group">
+                          <label for="pass1">Password</label>
+                          <input type="password" class="form-control" id="pass1" name="pass1" placeholder="Choose Your Password">
+                        </div>
+                        <div class="form-group">
+                            <label for="pass2">Confirm Password</label>
+                            <input type="password" class="form-control" id="pass2" name="pass2" placeholder="Enter Your Password Again">
+                          </div>
+                        <div class="form-check">
+                          <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                          <label class="form-check-label" for="exampleCheck1">Remember Me</label>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                      </form>
+                </div>
+                <div class="modal-footer">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 </html>
 
-{% endblock body%}
+{% endblock body %}

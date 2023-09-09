@@ -1,12 +1,10 @@
 from django.shortcuts import render, redirect
-from django.http import JsonResponse
-from django.http import HttpResponse
 from datetime import datetime
 from home.models import Contact, Poem
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
-from .models import User
-from django.contrib.auth import login, authenticate
+from django.http import HttpResponse
+from django.contrib.auth.models import User
 
 def index(request):
     # Your index view code here
@@ -37,26 +35,40 @@ def articles(request):
     # Your articles view code here
     return render(request, "articles.html")
 
-def stories(request):
-    # Your stories view code here
-    return render(request, "stories.html")
-
-def poem_list(request):
-    poems = Poem.objects.all()
-    return render(request, 'poems.html', {'poems': poems})
-
 def newsletter(request):
     # Your articles view code here
     return render(request, "newsletter.html")
 
-def login(request):
-    return render(request, 'newsletter.html')
+def stories(request):
+    # Your stories view code here
+    return render(request, "stories.html")
 
 @login_required
 def home(request):
     return render(request, 'index.html')
 
+def handleSignUp(request):
+    if request.method=="POST":
+        # Get the post parameters
+        username=request.POST['username']
+        email=request.POST['email']
+        fname=request.POST['fname']
+        lname=request.POST['lname']
+        pass1=request.POST['pass1']
+        pass2=request.POST['pass2']
 
+        # check for errorneous input
+        
+        # Create the user
+        myuser = User.objects.create_user(username, email, pass1)
+        myuser.first_name= fname
+        myuser.last_name= lname
+        myuser.save()
+        messages.success(request, 'Your Account was created successfully!')
+        return redirect('/newsletter')
+
+    else:
+        return HttpResponse("404 - Not found")
 
 
 
