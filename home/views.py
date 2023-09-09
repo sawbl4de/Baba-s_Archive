@@ -94,12 +94,12 @@ def handleLogin(request):
         if user is not None:
             login(request, user)
             messages.success(request, 'You have logged in succesfully!')
-            return redirect('/writings/poems')
+            return redirect('/')
         else:
             messages.success(request, 'Invalid credentials. Please try again.')
             return redirect('/newsletter')
 
-    return HttpResponse('404 - Not Found')
+    # return HttpResponse('404 - Not Found')
 
 
 def handleLogout(request):
