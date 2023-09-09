@@ -99,12 +99,17 @@ def handleLogin(request):
             messages.success(request, 'Invalid credentials. Please try again.')
             return redirect('/newsletter')
 
-
-    return HttpResponse('handleLogin')
+    return HttpResponse('404 - Not Found')
 
 
 def handleLogout(request):
-    return HttpResponse('handleLogout')
+    logout(request)
+    messages.success(request, 'Logged out successfully.')
+
+    return redirect('/newsletter')
+
+    
+
 
 
 
