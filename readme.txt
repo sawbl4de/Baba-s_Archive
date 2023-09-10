@@ -1,4 +1,6 @@
 Greetings to the GDSC Team! My name is Prithu Paresh (2022A4PS1795H) and this is my submission for the inductions of GDSC.
+The project name is Hello and it has one django app called home.
+
 Steps to run the project
 1. Clone the project from github, at https://github.com/sawbl4de/Baba-s_Archive.
 2. Install the dependencies needed from the requirements.txt file.
