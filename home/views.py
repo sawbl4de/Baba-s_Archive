@@ -6,6 +6,7 @@ from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login, logout
+from django.contrib import messages
 
 def index(request):
     # Your index view code here
@@ -61,16 +62,16 @@ def handleSignUp(request):
         # check for errorneous input
         if len(username) > 10:
             messages.success(request, 'Username must be under 10 characters!')
-            return redirect('/newsletter')
+            return redirect('/writings/poems')
         if len(pass1) < 8:
             messages.success(request, 'Password must be atleast 8 characters long!')
-            return redirect('/newsletter')
+            return redirect('/writings/poems')
         if pass1 != pass2:
             messages.success(request, 'Passwords do not match!')
-            return redirect('/newsletter')
+            return redirect('/writings/poems')
         if not username.isalnum():
             messages.success(request, 'Username must contain only letters and numbers!')
-            return redirect('/newsletter')
+            return redirect('/writings/poems')
 
         # Create the user
         myuser = User.objects.create_user(username, email, pass1)
@@ -78,7 +79,7 @@ def handleSignUp(request):
         myuser.last_name= lname
         myuser.save()
         messages.success(request, 'Your Account was created successfully! Login now')
-        return redirect('/newsletter')
+        return redirect('/writings/poems')
 
     else:
         return HttpResponse("404 - Not found")
@@ -97,7 +98,7 @@ def handleLogin(request):
             return redirect('/writings/poems')
         else:
             messages.success(request, 'Invalid credentials. Please try again.')
-            return redirect('/newsletter')
+            return redirect('/writings/poems')
 
     # return HttpResponse('404 - Not Found')
 
