@@ -801,10 +801,11 @@ COPY public.auth_permission (id, name, content_type_id, codename) FROM stdin;
 --
 
 COPY public.auth_user (id, password, last_login, is_superuser, username, first_name, last_name, email, is_staff, is_active, date_joined) FROM stdin;
-16	pbkdf2_sha256$600000$dY9VdyQRWinlzuSeJVFm4E$RqInIL4oEnWl8bOzVRlU5S5FLg9EhshUKj5nnFykq8s=	\N	f	prithu2	Prithu	Paresh	p@gmail.com	f	t	2023-09-09 21:25:26.405358+05:30
-1	pbkdf2_sha256$600000$EA0KBl9aoj6HmlfstRK2Z4$cayeBn2WQJWOCn/XfqN6wv/oD7jQcPs/tpdhAKdj9OQ=	2023-09-07 22:33:37.402013+05:30	t	prithu				t	t	2023-09-06 23:55:48.04836+05:30
-2	!Phqg7sqUzutqCFy6g8MLOtvTd4Q30xoL9R31nVOV	2023-09-09 21:03:22.752997+05:30	f	paresh.prithu2205	Prithu	Paresh	paresh.prithu2205@gmail.com	f	t	2023-09-07 15:22:15.257349+05:30
-15	pbkdf2_sha256$600000$uX2bwhH0KeSUa9EdmzoBBg$QkzAj2ufn5g3tE3XvZ8fcfW7BnvsivMVhRBGwD8ogTg=	2023-09-09 21:24:57.015566+05:30	f	rohan	Paresh	prithu	112@gmail.com	f	t	2023-09-09 19:29:35.275385+05:30
+1	pbkdf2_sha256$600000$EA0KBl9aoj6HmlfstRK2Z4$cayeBn2WQJWOCn/XfqN6wv/oD7jQcPs/tpdhAKdj9OQ=	2023-09-10 12:34:16.263596+05:30	t	prithu				t	t	2023-09-06 23:55:48.04836+05:30
+19	!PMSnypZVdEWEveIBI9kML8lJh1goWgY4AFibc8rP	2023-09-10 12:46:00.550336+05:30	f	f20221795	PRITHU PARESH DAS	.	f20221795@hyderabad.bits-pilani.ac.in	f	t	2023-09-10 12:37:37.766911+05:30
+15	pbkdf2_sha256$600000$uX2bwhH0KeSUa9EdmzoBBg$QkzAj2ufn5g3tE3XvZ8fcfW7BnvsivMVhRBGwD8ogTg=	2023-09-10 12:46:37.01956+05:30	f	rohan	Paresh	prithu	112@gmail.com	f	t	2023-09-09 19:29:35.275385+05:30
+20	pbkdf2_sha256$600000$WHNcrN0kMcONNXuBhaeAnc$zcZFkej6keSQBBs+axE2+hlIdvKx9iECwqTDwZIdNJc=	2023-09-10 13:25:17.487243+05:30	f	pranav	Pranav	Kumar	pranav@baryons.net	f	t	2023-09-10 13:24:40.361986+05:30
+2	!Phqg7sqUzutqCFy6g8MLOtvTd4Q30xoL9R31nVOV	2023-09-10 13:25:45.446664+05:30	f	paresh.prithu2205	Prithu	Paresh	paresh.prithu2205@gmail.com	f	t	2023-09-07 15:22:15.257349+05:30
 \.
 
 
@@ -864,6 +865,9 @@ COPY public.django_admin_log (id, action_time, object_id, object_repr, action_fl
 65	2023-09-09 19:33:21.148932+05:30	14	11111111	3		4	1
 66	2023-09-09 19:33:21.152576+05:30	13	1111111111	3		4	1
 67	2023-09-09 19:33:21.156147+05:30	12	ssad	3		4	1
+68	2023-09-10 12:34:27.3902+05:30	16	prithu2	3		4	1
+69	2023-09-10 12:34:27.402287+05:30	18	sssssssss	3		4	1
+70	2023-09-10 12:34:27.406887+05:30	17	tingu	3		4	1
 \.
 
 
@@ -963,7 +967,7 @@ c5cuqw0wlh0kmsmlsb4g0sj4qzdt0f5i	.eJxVjMsOwiAUBf-FtSG8Hy7d9xvIBS5SNZCUdmX8d9ukC9
 fnvf2du1ujuivzje6bq55ucgp9pr4g3o	eyJnb29nbGUtb2F1dGgyX3N0YXRlIjoiSUJwS1MyUHFrTlh4bUdLaVRwSkFWZzhCTTkyeWpsS2YifQ:1qeWCe:vcqN78-JFeHg__fvx_6OZQLGwbGVee0Try_i3G9k8lM	2023-09-22 13:16:56.458183+05:30
 hwq991aqpmgelg51vjp8vbyysjw8h13k	eyJnb29nbGUtb2F1dGgyX3N0YXRlIjoibmRvWXJzZWhMNE5mUmVkbTZBYjZEWE9YUjNtbVE2WkgifQ:1qeuHi:uKb5ohUVGblTyN_YAECHD3BkqBP81DFjaiSk4XMTxNI	2023-09-23 14:59:46.061922+05:30
 zez7oqrzh0rbyp7szgpvev2vx223rep5	.eJxVkLEOgjAQht-lsxKh0KZumhiNJjgZ49Qc7RWQSpWWyfjugjrIdMl_-f7vck9SOldanDvoQ5VIHyAgWZKTuB83Fb8rbW-Ha942Jo_Dg-76w8Wvz_sHmRE5ErL32MlaD0gyzQpQDbbjwjtVg5XKdRj9Uh99tdH2M46rUT7lK_DVABvNC6ViqlEkDMUiowWmsQHDMsCMUY6cpWAyjZwzKhhlClDQhAo0C5WaofTn_1Rb8EFaV9bt34GTF5DXG3F7Xeg:1qezxa:_pSaUkQerJkEmGfjlSOrrEJqP8hlidJxl_nZi0mVR5s	2023-09-23 21:03:22.757178+05:30
-xp8viuzxx9s15tuatexztj8esdkb8yro	.eJxVjL0OgjAURt-ls5KWUlrcdDPKQtyb2_aWf5pQcDG-u5A46Pqd850X0bAujV4jzrp15ESYIIff0YDtcdqJ62CqQ2LDtMytSXYl-dKYlMHhcPm6f4EGYrO985wzrgDRC8pSaUB5ZDKj6K2knAtlvPJFZi0F5mxmhPcouZFcUcMFxy1ah1APeAx7O9VxgQW38FV29q5Yf37EVo1FVd9GmNZUVu2zLETqyfsDw3RLLg:1qf0IT:fLBIa1DC3yZtULVyGsRZYog7LtoDTyIhvz21QZ4shfE	2023-09-23 21:24:57.020488+05:30
+nlo86auoqpq51b1kiu84yd6v0f5ho8zk	eyJnb29nbGUtb2F1dGgyX3N0YXRlIjoiSnByYm5TODAxSUNXRlZVa0RMSGZpc2lpMklySlNrZDQifQ:1qf0yL:6OaIsvqyzh1mx0QzCuzBpjwZcojzZcH1vSBmE8rX4es	2023-09-23 22:08:13.45784+05:30
 \.
 
 
@@ -972,6 +976,8 @@ xp8viuzxx9s15tuatexztj8esdkb8yro	.eJxVjL0OgjAURt-ls5KWUlrcdDPKQtyb2_aWf5pQcDG-u5
 --
 
 COPY public.home_contact (id, name, email, message, date) FROM stdin;
+1	Arti Das	artidas29@yahoo.co.in	Hi this is a test	2023-09-09 22:04:18.369301+05:30
+2	Pranav	pranav@baryons.net	HI this is a test	2023-09-10 13:26:20.797362+05:30
 \.
 
 
@@ -1039,7 +1045,8 @@ COPY public.social_auth_partial (id, token, next_step, backend, "timestamp", dat
 --
 
 COPY public.social_auth_usersocialauth (id, provider, uid, user_id, created, modified, extra_data) FROM stdin;
-1	google-oauth2	paresh.prithu2205@gmail.com	2	2023-09-07 15:22:15.319697+05:30	2023-09-09 21:03:31.737757+05:30	{"expires": 3599, "auth_time": 1694273611, "token_type": "Bearer", "access_token": "ya29.a0AfB_byC-nuynHJ5HUB0mWgkANOsD3eICwnAD8TufwnunZSEAPSMgHsA3Y-CpDBfdCFjmdokb1uv7OD5YJmlPUwwe-hzoF-YdP3QG8AFG2h21FzYK5U2C7m0Ej5GTqx_uKGcM0f9IRzUaGezfT9ghUa3vojzX21rsNQaCgYKAeoSARMSFQGOcNnCoDw7fMfk7wSfnJ9jzlFVYQ0169"}
+2	google-oauth2	f20221795@hyderabad.bits-pilani.ac.in	19	2023-09-10 12:37:37.775948+05:30	2023-09-10 12:46:00.536149+05:30	{"expires": 3599, "auth_time": 1694330160, "token_type": "Bearer", "access_token": "ya29.a0AfB_byCDjdj7KbWuxwpVnwmnhZma6Z98UD5q_sxgcaMnkP--lOQlVWqT9ahPS1aAx6-mz_wJn8QBLstzN1zyNQPgT795BF8em4d_eLt3qDHLhfpwxwmW4FVnEitF0obvv7xcyNExuRoG3q7uyesRZNAm_W9NUldJKgaCgYKAaESARESFQGOcNnCE86734hu1u2oQIr3pAh_gg0169"}
+1	google-oauth2	paresh.prithu2205@gmail.com	2	2023-09-07 15:22:15.319697+05:30	2023-09-10 13:25:45.355316+05:30	{"expires": 3599, "auth_time": 1694332545, "token_type": "Bearer", "access_token": "ya29.a0AfB_byD0At0Ak09_TARXBGipbgtIT_BY3pWzdJU-PWCq2r4W3IpjD66i2i_0yZg7lugJyoUwUNAHSTIQyMLLf_JK8Ajbj-2YVLLPPf_C1rlMkeqmp2HuoeSxfp8u56Hh-U3GPnwMCl7fSx8PTqbbDXm--B0f_hFt2AaCgYKAcMSARMSFQGOcNnChXHHomV-edwmxV0xVDcjlQ0169"}
 \.
 
 
@@ -1113,7 +1120,7 @@ SELECT pg_catalog.setval('public.auth_user_groups_id_seq', 1, false);
 -- Name: auth_user_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public.auth_user_id_seq', 16, true);
+SELECT pg_catalog.setval('public.auth_user_id_seq', 20, true);
 
 
 --
@@ -1127,7 +1134,7 @@ SELECT pg_catalog.setval('public.auth_user_user_permissions_id_seq', 1, false);
 -- Name: django_admin_log_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public.django_admin_log_id_seq', 67, true);
+SELECT pg_catalog.setval('public.django_admin_log_id_seq', 70, true);
 
 
 --
@@ -1148,7 +1155,7 @@ SELECT pg_catalog.setval('public.django_migrations_id_seq', 60, true);
 -- Name: home_contact_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public.home_contact_id_seq', 1, false);
+SELECT pg_catalog.setval('public.home_contact_id_seq', 2, true);
 
 
 --
@@ -1197,7 +1204,7 @@ SELECT pg_catalog.setval('public.social_auth_partial_id_seq', 1, false);
 -- Name: social_auth_usersocialauth_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public.social_auth_usersocialauth_id_seq', 1, true);
+SELECT pg_catalog.setval('public.social_auth_usersocialauth_id_seq', 2, true);
 
 
 --
