@@ -9,11 +9,9 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
 
 def index(request):
-    # Your index view code here
     return render(request, "index.html")
 
 def about(request):
-    # Your about view code here
     return render(request, "about.html")
 
 def contact(request):
@@ -28,21 +26,18 @@ def contact(request):
     return render(request, "contact.html")
 
 def poems(request):
-    # Your poems view code here
     list_title = Poem.objects.all()
     print(list_title)
     return render(request, "poems.html", {'list_title':list_title})
 
 def articles(request):
-    # Your articles view code here
     return render(request, "articles.html")
 
-def newsletter(request):
-    # Your articles view code here
-    return render(request, "newsletter.html")
+# def newsletter(request):
+#     # Your articles view code here
+#     return render(request, "newsletter.html")
 
 def stories(request):
-    # Your stories view code here
     return render(request, "stories.html")
 
 @login_required

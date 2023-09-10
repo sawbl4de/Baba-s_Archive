@@ -65,7 +65,7 @@
             border: 1px solid #191007;
         }
         .btn-outline-success:hover {
-            background-color: #B45F04;
+            background-color: #B18904;
         }
         .footer {
             background-color: #333;
@@ -131,7 +131,7 @@
         }
         
         .custom-login:hover, .custom-signup:hover {
-            background-color: #B45F04;
+            background-color: #B18904;
             color: #fff;
         }        
         .custom-google {
@@ -187,9 +187,9 @@
                     <li class="nav-item">
                         <a class="nav-link {% if '/contact' in request.path %}active{% endif %}" href="/contact">Contact</a>
                     </li>
-                    <li class="nav-item">
+                    {% comment %} <li class="nav-item">
                         <a class="nav-link {% if '/newsletter' in request.path %}active{% endif %}" href="/newsletter">Newsletter</a>
-                    </li>
+                    </li> {% endcomment %}
                 </ul>
                 <form class="d-flex" role="search">
                     <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
@@ -322,9 +322,9 @@
     {% block body %}
     {% endblock body %}
     
-    {% comment %} <div class="footer">
+   {% comment %} <div class="footer">
         <p>{% now "Y" %} Baba's Archive. All rights reserved.</p>
-    </div>     {% endcomment %}
+    </div> {% endcomment %}
     
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
