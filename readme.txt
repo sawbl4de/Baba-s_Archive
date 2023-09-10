@@ -1,4 +1,4 @@
-Greetings to the GDSC Team! My name is Prithu Paresh (2022A4PS1795H) and this is my submission for the inductions of GDSC.
+Greetings to the GDSC Team! My name is Prithu Paresh (2022A4PS1795H) and this is my submission for the Web Dev inductions of GDSC.
 The project name is Hello and it has one django app called home.
 
 Steps to run the project
