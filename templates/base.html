@@ -62,10 +62,10 @@
         .btn-outline-success {
             color: #000;
             background-color: #fff;
-            border-color: #28a745;
+            border: 1px solid #191007;
         }
         .btn-outline-success:hover {
-            background-color: #28a745;
+            background-color: #B45F04;
         }
         .footer {
             background-color: #333;
@@ -109,13 +109,31 @@
         .custom-go {
             height: 38px; /* Adjust the width as needed */
         }
-        .custom-login {
-            height: 38px; /* Adjust the width as needed */
+        .custom-login{
+            height: 38px;
+            color: #000;
+            background-color: #fff;
+            border: 1px solid #191007; /* Change border color */
+            padding: 5px 10px; /* Adjust padding as needed */
+            cursor: pointer;
+            transition: background-color 0.3s ease-in-out;
+            border-radius: 5px;
         }
-        .custom-signup {
-            width: 140px; /* Adjust the width as needed */
+        .custom-signup{
+            height: 38px;
+            width: 140px;
+            color: #000;
+            background-color: #fff;
+            border: 1px solid #191007; /* Change border color */
+            cursor: pointer;
+            transition: background-color 0.3s ease-in-out;
+            border-radius: 5px;
         }
         
+        .custom-login:hover, .custom-signup:hover {
+            background-color: #B45F04;
+            color: #fff;
+        }        
         .custom-google {
             margin-bottom: 0; /* Remove extra margin at the bottom */
             height: 38px; /* Adjust the height as needed */
@@ -178,6 +196,17 @@
                     <div class="mx-1"></div>
                     <button class="btn btn-outline-success my-2 custom-go" type="submit">Go!</button>
                     <div class="mx-1"></div>
+                    {% if user.is_authenticated %}
+                    <li class="nav-item dropdown">
+                        <div class="my-3"></div>
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <strong>Welcome {{request.user}}!</strong>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="/logout" >Logout</a></li>
+                        </ul>
+                    </li>
+                    {% else %}
                     <button type="button" class="button login my-2 custom-login" data-toggle="modal" data-target="#loginModal">Login</button>
                     <div class="mx-1"></div>
                     <button type="button" class="button subscribe my-2 custom-signup" data-toggle="modal" data-target="#subscribeModal">Sign Up</button>
@@ -189,6 +218,7 @@
                         </a>
                     </button>
                 </form>
+                    {% endif %}
             </div>
         </div>
     </nav>

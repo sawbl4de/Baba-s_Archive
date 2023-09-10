@@ -107,7 +107,7 @@ def handleLogout(request):
     logout(request)
     messages.success(request, 'Logged out successfully.')
 
-    return redirect('/newsletter')
+    return redirect('/writings/poems')
 
     
 
