@@ -10,6 +10,11 @@ The superuser login for the admin site is:
 Username - prithu
 Password - prithu2205
 
+Ordinary user login for the main site is:
+Username - rohan
+Password - 1122334455
+Alternatively, you could create a new user using the Sign Up option.
+
 Some changes I know I could have made:
 1. When Login fails due to invalid credentials, I have a django message flashing on the screen saying "Invalid Credentials. 
     Please try again.". I had to use messages.success to achieve this, because messages.error wasn't working for some reason.
